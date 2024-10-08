@@ -1,6 +1,6 @@
 import { faCircleExclamation, faLanguage, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns'; // For formatting dates
 import React, { useMemo } from "react";
 import { STATUS_ERROR, STATUS_READY, STATUS_TRANSCRIBING } from '../constants';
 import { Medium } from "../types";
