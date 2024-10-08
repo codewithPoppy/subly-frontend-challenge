@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# Subly Front-End Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a solution to the Subly Front-End Challenge, built using React and TypeScript.  It fetches media data from an API endpoint and displays it as a collection of cards with different states and filtering capabilities.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+* **Data Fetching:**  Fetches media data from a JSON endpoint.
+* **Card Display:** Renders each media item as a card, displaying its cover image, title, status, and last updated time.
+* **Dynamic Card States:**  Handles different media states:
+  * **Ready:** Displays an edit button and language count on hover.
+  * **Error:** Shows an error message.
+  * **Transcribing:** Shows a loading bar.
+* **Filtering:** Allows filtering by media status (ready, error, transcribing) and language.
+* **Responsive Design:** Adapts to different screen sizes using a responsive grid layout.
+* **Unit Testing:** Includes comprehensive unit tests for the `Card` and `CardList` components using Jest and React Testing Library.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* **React:**  JavaScript library for building user interfaces.
+* **TypeScript:**  Typed superset of JavaScript for improved code quality and maintainability.
+* **Date-fns:**  For date formatting.
+* **Axios:** For making HTTP requests.
+* **Jest:**  JavaScript testing framework.
+* **React Testing Library:**  Testing library for React components.
+* **whatwg-fetch (or node-fetch):**  Polyfill for the `fetch` API. (Choose one)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation and Setup
 
-### `npm test`
+1. Clone the repository: `git clone https://github.com/codewithPoppy/subly-frontend-challenge`
+2. Navigate to the project directory: `cd subly-frontend-challenge`
+3. Install dependencies: `npm install` or `yarn install`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the Application
 
-### `npm run build`
+1. Start the development server: `npm start` or `yarn start`
+2. Open your browser and go to `http://localhost:3000`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running Tests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Run the tests: `npm test` or `yarn test`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
 
-### `npm run eject`
+subly-frontend-challenge/
+├── src/
+│ ├── components/
+│ │ ├── Card.tsx
+│ │ ├── Card.test.tsx
+│ │ ├── CardList.tsx
+│ │ └── CardList.test.tsx
+│ ├── constants/
+│ │ └── index.ts
+│ ├── types/
+│ │ └── index.ts
+│ ├── App.tsx
+│ ├── App.css
+│ ├── index.tsx
+│ └── setupTests.ts
+├── public/
+│ └── index.html
+├── jest.config.js (or jest.config.ts)
+├── package.json
+└── README.md
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Design Decisions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **Component Architecture:** The project uses a clear separation of concerns with reusable components (`Card` and `CardList`).
+* **State Management:**  Uses React's built-in state management for simplicity.  For larger applications, consider using a more robust state management solution like Redux or Context API.
+* **Styling:**  Uses CSS Modules for component-level styling. (Or describe your styling approach)
+* **Testing Strategy:**  Employs a comprehensive testing approach with unit tests covering different component states and edge cases.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future Improvements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **Virtualization:** Implement virtualization for improved performance with large lists of media.
+* **Accessibility:**  Further enhance accessibility features following WCAG guidelines.
+* **Advanced Filtering:**  Add more filtering options (e.g., by date range, keywords).
+* **Internationalization (i18n):** Implement i18n support for multiple languages.
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! Please feel free to submit pull requests.
