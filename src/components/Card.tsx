@@ -1,10 +1,11 @@
-import React, { useMemo } from "react";
-import { formatDistanceToNow } from 'date-fns';
+import { faCircleExclamation, faLanguage, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { formatDistanceToNow } from 'date-fns';
+import React, { useMemo } from "react";
+import { STATUS_ERROR, STATUS_READY, STATUS_TRANSCRIBING } from '../constants';
 import { Medium } from "../types";
-import { STATUS_READY, STATUS_ERROR, STATUS_TRANSCRIBING } from '../constants'
-import "./Card.css";
+import ProgressBar from './ProgressBar';
+import "../styles/Card.css";
 
 interface CardProps {
   medium: Medium;
@@ -36,13 +37,24 @@ const Card: React.FC<CardProps> = ({ medium }) => {
             <img src={cover} alt={name} className="cover-image" />
             <div className="overlay">
               <button className="edit-button">Edit</button>
-              <span className="language-count">{languages.length} Languages</span>
+              <button className="delete-button"><FontAwesomeIcon icon={faTrash} /></button>
             </div>
+            <span className="language-count">
+              <span className="icon">
+                <FontAwesomeIcon icon={faLanguage} />
+              </span>
+              <span className="text">{languages.length} Languages</span>
+            </span>
           </div>
         );
       case STATUS_ERROR:
         return (<div className="card-content error">
-          <p><FontAwesomeIcon icon={faCircleExclamation} className="icon" />An error occurred while processing your file. Delete file to try again, and report issue if the problem persists.</p>
+          <div className="error-content">
+            <FontAwesomeIcon icon={faCircleExclamation} className="error-content-icon" />
+            <p className="error-content-text">
+              &nbsp;&nbsp;An error occurred while processing your file. Delete file to try again, and report issue if the problem persists.
+            </p>
+          </div>
           <div className="buttons">
             <button className="delete-btn">Delete file</button>
             <button className="report-btn">Report issue</button>
@@ -52,7 +64,10 @@ const Card: React.FC<CardProps> = ({ medium }) => {
         return (
           <div className="card-content transcribing">
             <img src={cover} alt={name} className="cover-image" />
-            <div className="loading-bar"></div>
+            <div className="overlay">
+              <div className='transcribing-text'>Transcribing subtitles</div>
+              <ProgressBar />
+            </div>
           </div>
         );
       default:

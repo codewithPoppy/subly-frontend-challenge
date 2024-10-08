@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API_ENDPOINT } from '../constants';
 import { Medium } from '../types';
 import Card from './Card';
-import './CardList.css';
+import '../styles/CardList.css';
 
 const CardList: React.FC = () => {
   const [media, setMedia] = useState<Medium[]>([]);
